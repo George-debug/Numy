@@ -55,6 +55,11 @@
   border: 0;
 }
 
+body {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d76ea4), color-stop(#b76caf), to(#926cb2));
+  background-image: linear-gradient(to right bottom, #d76ea4, #b76caf, #926cb2);
+}
+
 #container {
   display: -ms-grid;
   display: grid;
@@ -64,8 +69,6 @@
       grid-template-rows: 6.25vh 87.5vh 6.25vh;
   height: 100vh;
   width: 100vw;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#d76ea4), color-stop(#b76caf), to(#926cb2));
-  background-image: linear-gradient(to right bottom, #d76ea4, #b76caf, #926cb2);
 }
 
 #container #button-zone {
@@ -309,6 +312,10 @@
       grid-template-columns: 4.16667vh 1fr 4.16667vh;
   overflow-y: auto;
   scrollbar-width: none;
+}
+
+#container #game #z0::-webkit-scrollbar {
+  display: none;
 }
 
 #container #game #z0 #screen {
