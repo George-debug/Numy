@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>NUMY</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="description" content="Just a game">
+    <meta name="author" content="Butco George">
+    <link rel='stylesheet' type='text/css' media='screen' href='style/main.css'>
+</head>
+<body>
+    <div id="container">
+        <div id="button-zone">
+
+            <div id="button1" class="button">
+                <div class="z1"><div class="z11"></div><div class="z12"></div></div>
+                <div class="z2">
+                    <div class="z21">
+                        <img src="svg/11.svg">
+                    </div>
+                    <div class="z22">
+                        <img src="svg/12.svg">
+                    </div>
+                </div>
+                <div class="z3"><div class="shadow"><div class="z31"></div><div class="z32"></div></div></div>
+            </div>
+
+            <div id="button2" class="button">
+                <div class="z1"><div class="z11"></div><div class="z12"></div></div>
+                <div class="z2">
+                    <div class="z21">
+                        <img src="svg/21.svg">
+                    </div>
+                    <div class="z22">
+                        <img src="svg/22.svg">
+                    </div>
+                </div>
+                <div class="z3"><div class="shadow"><div class="z31"></div><div class="z32"></div></div></div>
+            </div>
+
+            <div id="button3" class="button">
+                <div class="z1"><div class="z11"></div><div class="z12"></div></div>
+                <div class="z2">
+                    <div class="z21">
+                        <img src="svg/31.svg">
+                    </div>
+                    <div class="z22">
+                        <img src="svg/32.svg">
+                    </div>
+                </div>
+                <div class="z3"><div class="shadow"><div class="z31"></div><div class="z32"></div></div></div>
+            </div>
+
+            <div id="button4" class="button">
+                <div class="z1"><div class="z11"></div><div class="z12"></div></div>
+                <div class="z2">
+                    <div class="z21">
+                        <img src="svg/41.svg">
+                    </div>
+                    <div class="z22">
+                        <input type="text" id="levelInput" class="invisible" name="level" maxlength="2" placeholder="1 to 99" onkeypress="buttons.button4.levelInputHandle(event)">
+                        <img id="levelSvg" src="svg/42.svg">
+                    </div>
+                </div>
+                <div class="z3"><div class="shadow"><div class="z31"></div><div class="z32"></div></div></div>
+            </div>
+
+        </div>
+
+        <div id="game">
+            <div id="z1">
+                <div id="z12"></div>
+                <div id="z11"></div>
+            </div>
+            <div id="z0">
+                <div id="screen">
+                    <div>ERROR</div>
+                </div>
+            </div>
+            <div id="z3">
+                <div id="z31"></div>
+                <div id="z32"></div>
+            </div>
+        </div>
+
+    </div>
+    
+      <script src="script/app.js"></script>
+</body>
+</html>

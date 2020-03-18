@@ -1,0 +1,245 @@
+@font-face
+  font-family: "Block"
+  src: url('Blocktopia.ttf') format('truetype')
+
+$total: 100vh
+$unit: $total/16/3
+$phi: 1.61803398875
+
+$hlUnit: 1.05
+$shadowLength: $unit - $unit/($phi*$phi*$phi)
+$squareLength: ($total - 10*$unit)/9
+$squareUnit: $squareLength/7
+$squareShadowLength: $squareUnit - $squareUnit/($phi*$phi*$phi)
+$numberSize: $squareUnit*6
+
+$color-3: #f8fbfc
+$color-2: #b9d4e1
+$color-1: #2e80a7
+$color0: #006494
+$color1: #00527a
+$color2: #003751
+$color-c: #eca400
+
+@mixin background-gradient
+  background-image: linear-gradient(to right bottom, #d76ea4, #b76caf, #926cb2);
+  
+@keyframes tada
+  0%
+    transform: scale3d(1 * $hlUnit, 1* $hlUnit, 1* $hlUnit)
+
+  10%, 20%
+    transform: scale3d(.9 * $hlUnit, .9 * $hlUnit, .9 * $hlUnit) rotate3d(0, 0, 1, -3deg)
+
+  30%, 50%, 70%, 90%
+    transform: scale3d(1.1 * $hlUnit, 1.1 * $hlUnit, 1.1 * $hlUnit) rotate3d(0, 0, 1, 3deg)
+
+  40%, 60%, 80% 
+    transform: scale3d(1.1 * $hlUnit, 1.1 * $hlUnit, 1.1 * $hlUnit) rotate3d(0, 0, 1, -3deg)
+
+  100% 
+    transform: scale3d(1 * $hlUnit, 1 * $hlUnit, 1 * $hlUnit)
+
+*
+  margin: 0
+  padding: 0
+  border: 0
+
+body
+  @include background-gradient;
+
+#container
+  display: grid
+  grid-template-columns: 1fr #{21*$unit} 1fr #{$total - 6*$unit} 1fr
+  grid-template-rows: #{3*$unit} #{$total - 6*$unit}  #{3*$unit}
+  height: 100vh
+  width: 100vw
+
+  #button-zone
+    grid-column: 2 / 3
+    grid-row: 2 / 3
+    display: grid
+    grid-template-rows: #{1*$unit} #{7*$unit} 1fr #{7*$unit} 1fr #{7*$unit} 1fr #{7*$unit} #{1*$unit}
+    
+    @for $i from 1 through 4
+      #button#{$i}
+        grid-row: #{$i*2} / #{$i*2+1}
+
+    .button
+      display: grid
+      grid-template-rows: #{$unit} 1fr #{$unit}
+      cursor: pointer
+      
+      .z1
+        display: grid
+        grid-template-columns: #{$unit} 6fr 13fr #{$unit}
+
+        .z11
+          background: $color1
+          grid-column: 2/3
+
+        .z12
+          background: $color0
+          grid-column: 3/4
+
+      .z3
+        display: grid
+        grid-template-columns: 1fr 19fr 1fr
+
+        .shadow
+          grid-column: 2/3
+          box-shadow: 0px #{$shadowLength} $color2;
+          display: grid
+          grid-template-columns: 6fr 13fr
+
+          .z31
+            background: $color1
+
+          .z32
+            background: $color0
+
+      .z2
+        display: grid
+        grid-template-columns: 7fr 14fr
+        box-shadow: 0px #{$shadowLength} $color2
+
+        .z21
+          background: $color1
+
+          img
+            height: 100%
+            width: 100%
+
+        .z22
+          background: $color0
+
+          img
+            height: 100%
+            width: 100%
+    
+    #button1, #button2, #button3
+      &:active
+        transform: translateY($shadowLength);
+
+        .z2, .z3 .shadow
+          box-shadow: 0px 0px $color2
+
+    #button4
+      .z2
+        .z22
+          .invisible
+            display: none !important
+
+          #levelInput
+            padding-top: $unit/4
+            font-size: $unit*4
+            width: 100%
+            height: 100%
+            background: transparent
+            text-align: center
+            font-family: Block
+            color: $color-3
+
+
+  #game
+    grid-row: 2 / 3
+    grid-column: 4 / 5
+    display: grid
+    grid-template-rows: #{2 * $unit} 1fr #{2 * $unit}
+
+    #z1
+      grid-row: 1/2
+      display: grid
+      grid-template-rows: 1fr 1fr
+      grid-template-columns: #{$unit} #{$unit} 1fr #{$unit} #{$unit}
+
+      #z11, #z12
+        background: $color-3
+
+      #z11
+        grid-row: 2/3
+        grid-column: 2/5
+
+      #z12
+        grid-row: 1/2
+        grid-column: 3/4
+
+    #z3
+      grid-row: 3/4
+      display: grid
+      grid-template-rows: 1fr 1fr
+      grid-template-columns: #{$unit} #{$unit} 1fr #{$unit} #{$unit}
+
+      #z31, #z32
+        background: $color-3
+        box-shadow: 0px #{$shadowLength} $color-2
+
+      #z31
+        grid-row: 1/2
+        grid-column: 2/5
+
+      #z32
+        grid-row: 2/3
+        grid-column: 3/4
+
+    #z0
+      grid-row: 2/3
+      background: $color-3
+      box-shadow: 0px #{$shadowLength} $color-2
+      display: grid
+      grid-template-columns: #{2 * $unit} 1fr #{2 * $unit}
+      overflow-y: auto
+      scrollbar-width: none
+      
+      #screen
+        grid-column: 2/3
+        display: grid
+        grid-auto-rows: $squareLength
+        grid-template-columns: repeat(9, 1fr)
+        grid-row-gap: $squareShadowLength
+        -webkit-touch-callout: none
+        user-select: none
+
+        @for $i from 0 through 4
+          div:nth-child(9n + #{$i * 2 + 1})
+            background: $color0
+
+        @for $i from 1 through 4
+          div:nth-child(9n + #{$i * 2})
+            background: $color1
+
+        .number
+          line-height: $squareLength
+          font-size: $numberSize
+          padding-top: $squareUnit/3
+          text-align: center
+          font-family: Block
+          color: $color-3
+          cursor: pointer
+          transition: transform .05s
+
+          &:hover
+            transform: scale(1.1)
+            z-index: 10
+        
+        .empty
+          background: none !important
+          display: grid
+          grid-template-columns: 1fr #{4*$squareUnit} 1fr
+          grid-template-rows: 1fr #{4*$squareUnit} 1fr
+
+          &::after
+            content: ""
+            grid-column: 2/3
+            grid-row: 2/3
+            background: $color-2
+
+        .selected
+          background: $color-2 !important
+          color: $color0 !important
+
+        .hled
+          animation-name: tada
+          animation-duration: 1s
+          animation-fill-mode: both
+          z-index: 10 !important
