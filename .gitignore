@@ -1,0 +1,8 @@
+/.vscode
+/node_modules
+/script/app.ts
+/script/man.js
+/style/main.sass
+package.lock.json
+package.json
+tsconfig.json
