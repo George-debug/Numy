@@ -135,6 +135,9 @@ var table = new class {
 var buttons = new class {
     constructor() {
         this.button1 = new class {
+            constructor() {
+                this.shuffleCounter = 0;
+            }
             addNumbers() {
                 let t = [], c = 0;
                 for (let i = 0; i < table.matrix.length; i++) {
@@ -147,9 +150,17 @@ var buttons = new class {
                 t.splice(0, end);
                 return t;
             }
+            shuffleCheck() {
+                if (this.shuffleCounter == 5) {
+                    this.shuffleCounter = 0;
+                    table.matrix = table.shuffle(table.matrix);
+                }
+            }
             main() {
                 //let t = this.addNumbers()
                 table.matrix = table.matrix.concat(this.addNumbers());
+                this.shuffleCounter++;
+                this.shuffleCheck();
                 table.display();
             }
         };
