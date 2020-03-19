@@ -88,28 +88,24 @@ body {
       grid-template-rows: 2.08333vh 14.58333vh 1fr 14.58333vh 1fr 14.58333vh 1fr 14.58333vh 2.08333vh;
 }
 
-#container #button-zone #button1 {
+#container #button-zone #add, #container #button-zone #mix {
   -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2 / 3;
+  grid-row: 2/2;
 }
 
-#container #button-zone #button2 {
+#container #button-zone #check {
   -ms-grid-row: 4;
-  -ms-grid-row-span: 1;
-  grid-row: 4 / 5;
+  grid-row: 4/4;
 }
 
-#container #button-zone #button3 {
+#container #button-zone #new {
   -ms-grid-row: 6;
-  -ms-grid-row-span: 1;
-  grid-row: 6 / 7;
+  grid-row: 6/6;
 }
 
-#container #button-zone #button4 {
+#container #button-zone #level {
   -ms-grid-row: 8;
-  -ms-grid-row-span: 1;
-  grid-row: 8 / 9;
+  grid-row: 8/8;
 }
 
 #container #button-zone .button {
@@ -123,8 +119,8 @@ body {
 #container #button-zone .button .z1 {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 2.08333vh 6fr 13fr 2.08333vh;
-      grid-template-columns: 2.08333vh 6fr 13fr 2.08333vh;
+  -ms-grid-columns: 1fr 6fr 13fr 1fr;
+      grid-template-columns: 1fr 6fr 13fr 1fr;
 }
 
 #container #button-zone .button .z1 .z11 {
@@ -181,31 +177,25 @@ body {
   background: #00527a;
 }
 
-#container #button-zone .button .z2 .z21 img {
-  height: 100%;
-  width: 100%;
-}
-
 #container #button-zone .button .z2 .z22 {
   background: #006494;
 }
 
-#container #button-zone .button .z2 .z22 img {
-  height: 100%;
-  width: 100%;
+#container #button-zone .button .z2 img {
+  height: 9.79167vh;
 }
 
-#container #button-zone #button1:active, #container #button-zone #button2:active, #container #button-zone #button3:active {
+#container #button-zone #add:active, #container #button-zone #mix:active, #container #button-zone #check:active, #container #button-zone #new:active {
   -webkit-transform: translateY(1.59153vh);
           transform: translateY(1.59153vh);
 }
 
-#container #button-zone #button1:active .z2, #container #button-zone #button1:active .z3 .shadow, #container #button-zone #button2:active .z2, #container #button-zone #button2:active .z3 .shadow, #container #button-zone #button3:active .z2, #container #button-zone #button3:active .z3 .shadow {
+#container #button-zone #add:active .z2, #container #button-zone #add:active .z3 .shadow, #container #button-zone #mix:active .z2, #container #button-zone #mix:active .z3 .shadow, #container #button-zone #check:active .z2, #container #button-zone #check:active .z3 .shadow, #container #button-zone #new:active .z2, #container #button-zone #new:active .z3 .shadow {
   -webkit-box-shadow: 0px 0px #003751;
           box-shadow: 0px 0px #003751;
 }
 
-#container #button-zone #button4 #levelInput {
+#container #button-zone #level #levelInput {
   padding-top: 0.52083vh;
   font-size: 8.33333vh;
   width: 100%;
@@ -425,51 +415,5 @@ body {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   z-index: 10 !important;
-}
-
-#container #game #z0 .centered {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: 1fr auto 1fr;
-      grid-template-rows: 1fr auto 1fr;
-  -ms-grid-columns: 1fr auto 1fr;
-      grid-template-columns: 1fr auto 1fr;
-  width: 87.5vh;
-}
-
-#container #game #z0 .centered #shufflePanel {
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2/3;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2/3;
-  width: 79.16667vh;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: auto auto;
-      grid-template-rows: auto auto;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  text-align: center;
-  color: #f8fbfc;
-}
-
-#container #game #z0 .centered #shufflePanel p {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  grid-row: 1/2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1/3;
-  color: #003751;
-}
-
-#container #game #z0 .centered #shufflePanel #shuffleNo {
-  background: #006494;
-}
-
-#container #game #z0 .centered #shufflePanel #shuffleYes {
-  background: #00527a;
 }
 /*# sourceMappingURL=main.css.map */

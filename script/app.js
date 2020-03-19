@@ -54,7 +54,7 @@ var square = new class {
             if (this.check.places(this.selected, targetId)) {
                 table.matrix[this.selected] = -1;
                 table.matrix[targetId] = -1;
-                table.remove1(this.selected, targetId);
+                table.remove1();
                 table.display();
             }
             this.selected = -1;
@@ -108,19 +108,22 @@ var table = new class {
         this.screen.innerHTML = content;
         //document.getElementById(10).classList.add('checked')
     }
-    remove1(p1, p2) {
-        this.remove1CheckRow(p1);
-        this.remove1CheckRow(p2);
-    }
     remove1CheckRow(p) {
-        let rowStart = p - p % 9;
-        //console.log('rowStart', rowStart)
-        if (rowStart + 8 >= this.matrix.length)
+        let rowStart = p - 4, rowEnd = p + 4;
+        //console.log(rowStart, rowEnd)
+        if (rowEnd >= this.matrix.length)
             return 0;
-        for (var j = rowStart; j <= rowStart + 8; j++)
-            if (this.matrix[j] != -1)
+        for (let i = rowStart; i <= rowEnd; i++) {
+            if (this.matrix[i] != -1)
                 return 0;
+        }
         this.matrix.splice(rowStart, 9);
+        return 1;
+    }
+    remove1() {
+        for (let i = 4; i <= table.matrix.length; i += 9)
+            if (this.remove1CheckRow(i) == 1)
+                i -= 9;
     }
     valid(p1, p2) {
         //console.log(`p1 ${p1}, p2 ${p2}`)
@@ -134,10 +137,7 @@ var table = new class {
 };
 var buttons = new class {
     constructor() {
-        this.button1 = new class {
-            constructor() {
-                this.shuffleCounter = 0;
-            }
+        this.add = new class {
             addNumbers() {
                 let t = [], c = 0;
                 for (let i = 0; i < table.matrix.length; i++) {
@@ -150,21 +150,43 @@ var buttons = new class {
                 t.splice(0, end);
                 return t;
             }
-            shuffleCheck() {
-                if (this.shuffleCounter == 5) {
-                    this.shuffleCounter = 0;
-                    table.matrix = table.shuffle(table.matrix);
-                }
-            }
             main() {
                 //let t = this.addNumbers()
                 table.matrix = table.matrix.concat(this.addNumbers());
-                this.shuffleCounter++;
-                this.shuffleCheck();
+                buttons.mix.counter++;
+                buttons.mix.check(false);
                 table.display();
             }
         };
-        this.button2 = new class {
+        this.mix = new class {
+            constructor() {
+                this.counter = 0;
+                this.mixButton = document.getElementById('mix');
+                this.addButton = document.getElementById('add');
+            }
+            check(k) {
+                var _a, _b, _c, _d;
+                if (this.counter == 4) {
+                    (_a = this.addButton) === null || _a === void 0 ? void 0 : _a.classList.add('invisible');
+                    (_b = this.mixButton) === null || _b === void 0 ? void 0 : _b.classList.remove('invisible');
+                }
+                if (k) {
+                    (_c = this.addButton) === null || _c === void 0 ? void 0 : _c.classList.remove('invisible');
+                    (_d = this.mixButton) === null || _d === void 0 ? void 0 : _d.classList.add('invisible');
+                }
+            }
+            main() {
+                var _a, _b;
+                //console.log('pressed')
+                table.matrix = table.shuffle(table.matrix);
+                (_a = this.addButton) === null || _a === void 0 ? void 0 : _a.classList.remove('invisible');
+                (_b = this.mixButton) === null || _b === void 0 ? void 0 : _b.classList.add('invisible');
+                this.counter = 0;
+                table.remove1();
+                table.display();
+            }
+        };
+        this.check = new class {
             constructor() {
                 this.check = new class {
                     place(place) {
@@ -227,13 +249,15 @@ var buttons = new class {
                 }
             }
         };
-        this.button3 = new class {
+        this.new = new class {
             main() {
                 table.matrix = table.generate();
+                buttons.mix.counter = 0;
+                buttons.mix.check(true);
                 table.display();
             }
         };
-        this.button4 = new class {
+        this.level = new class {
             constructor() {
                 this.levelSvg = document.getElementById('levelSvg');
                 this.levelInput = document.getElementById('levelInput');
@@ -263,15 +287,18 @@ var buttons = new class {
         };
     }
 };
-document.getElementById('button1').onclick = () => {
-    buttons.button1.main();
+document.getElementById('add').onclick = () => {
+    buttons.add.main();
 };
-document.getElementById('button2').onclick = () => {
-    buttons.button2.main();
+document.getElementById('mix').onclick = () => {
+    buttons.mix.main();
 };
-document.getElementById('button3').onclick = () => {
-    buttons.button3.main();
+document.getElementById('check').onclick = () => {
+    buttons.check.main();
 };
-document.getElementById('button4').onclick = () => {
-    buttons.button4.main();
+document.getElementById('new').onclick = () => {
+    buttons.new.main();
+};
+document.getElementById('level').onclick = () => {
+    buttons.level.main();
 };
