@@ -310,6 +310,14 @@ body {
   display: none;
 }
 
+#container #game #z0 #win {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  color: #003751;
+  text-align: center;
+}
+
 #container #game #z0 #screen {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;

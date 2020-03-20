@@ -55,7 +55,8 @@ var square = new class {
                 table.matrix[this.selected] = -1;
                 table.matrix[targetId] = -1;
                 table.remove1();
-                table.display();
+                if (!table.checkGameOver())
+                    table.display();
             }
             this.selected = -1;
         }
@@ -70,6 +71,9 @@ var table = new class {
         this.size = 18;
         //add: number = 9
         this.screen = document.getElementById('screen');
+        this.win = document.getElementById('win');
+        this.winMsg = ["Well done!", "Congratulations!", "You solved it!", "BIG BRAIN", "Smarty pants!", "Nice!", "It ain't much, but it's an honest work", "Good job!", "Well played!", "Well boys, we did it! Digits are no more"];
+        this.generateWinMsg();
         this.matrix = this.generate();
         this.display();
     }
@@ -133,6 +137,22 @@ var table = new class {
             return 1;
         //console.log(`not ok`)
         return 0;
+    }
+    generateWinMsg() {
+        this.win.innerHTML = this.winMsg[Math.floor(Math.random() * this.winMsg.length)];
+    }
+    checkGameOver() {
+        var _a, _b;
+        if (this.matrix.length <= 9) {
+            for (let i = 0; i < this.matrix.length; i++)
+                if (this.matrix[i] != -1)
+                    return 0;
+            (_a = this.win) === null || _a === void 0 ? void 0 : _a.classList.remove('invisible');
+            (_b = this.screen) === null || _b === void 0 ? void 0 : _b.classList.add('invisible');
+            return 1;
+        }
+        else
+            return 0;
     }
 };
 var buttons = new class {
@@ -251,6 +271,10 @@ var buttons = new class {
         };
         this.new = new class {
             main() {
+                var _a;
+                table.generateWinMsg();
+                table.screen.classList.remove('invisible');
+                (_a = table.win) === null || _a === void 0 ? void 0 : _a.classList.add('invisible');
                 table.matrix = table.generate();
                 buttons.mix.counter = 0;
                 buttons.mix.check(true);
