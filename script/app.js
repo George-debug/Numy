@@ -287,6 +287,7 @@ var buttons = new class {
                 this.levelInput = document.getElementById('levelInput');
             }
             levelInputHandle(event) {
+                var _a;
                 if (event.key == "Enter" || event.key == " ") {
                     let value = Number(this.levelInput.value);
                     if (Math.floor(value) == value && value > 0 && value < 100) {
@@ -298,6 +299,8 @@ var buttons = new class {
                         table.level = value;
                         table.size = base;
                         //table.add = add
+                        table.screen.classList.remove('invisible');
+                        (_a = table.win) === null || _a === void 0 ? void 0 : _a.classList.add('invisible');
                         table.matrix = table.generate();
                         table.display();
                     }
