@@ -1,9 +1,0 @@
-/.vscode
-/node_modules
-/script/app.ts
-/script/main.js
-/style/main.sass
-package-lock.json
-package.json
-tsconfig.json
-.getignore
