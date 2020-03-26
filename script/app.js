@@ -103,18 +103,16 @@ var table = new class {
     display() {
         var content = '';
         square.selected = -1;
-        for (var i = 0; i < this.matrix.length; i++) {
-            if (this.matrix[i] != -1)
-                content += square.create(i, this.matrix[i]);
+        this.matrix.map((cell, i) => {
+            if (cell != -1)
+                content += square.create(i, cell);
             else
                 content += square.empty;
-        }
+        });
         this.screen.innerHTML = content;
-        //document.getElementById(10).classList.add('checked')
     }
     remove1CheckRow(p) {
         let rowStart = p - 4, rowEnd = p + 4;
-        //console.log(rowStart, rowEnd)
         if (rowEnd >= this.matrix.length)
             return 0;
         for (let i = rowStart; i <= rowEnd; i++) {
