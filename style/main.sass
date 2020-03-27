@@ -44,6 +44,8 @@ $color-c: #eca400
   margin: 0
   padding: 0
   border: 0
+  -webkit-touch-callout: none
+  user-select: none
 
 body
   @include background-gradient;
@@ -209,8 +211,6 @@ body
         grid-auto-rows: $squareLength
         grid-template-columns: repeat(9, 1fr)
         grid-row-gap: $squareShadowLength
-        -webkit-touch-callout: none
-        user-select: none
 
         @for $i from 0 through 4
           div:nth-child(9n + #{$i * 2 + 1})

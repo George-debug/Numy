@@ -53,6 +53,11 @@
   margin: 0;
   padding: 0;
   border: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 body {
@@ -329,11 +334,6 @@ body {
   -ms-grid-columns: (1fr)[9];
       grid-template-columns: repeat(9, 1fr);
   grid-row-gap: 0.95997vh;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 #container #game #z0 #screen div:nth-child(9n + 1) {
