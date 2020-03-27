@@ -211,6 +211,26 @@ body {
   color: #f8fbfc;
 }
 
+#container #button-zone #level #levelInput::-webkit-input-placeholder {
+  color: #f8fbfc;
+}
+
+#container #button-zone #level #levelInput:-ms-input-placeholder {
+  color: #f8fbfc;
+}
+
+#container #button-zone #level #levelInput::-ms-input-placeholder {
+  color: #f8fbfc;
+}
+
+#container #button-zone #level #levelInput::placeholder {
+  color: #f8fbfc;
+}
+
+#container #button-zone #level #levelInput:-ms-input-placeholder {
+  color: #f8fbfc;
+}
+
 #container #game {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
