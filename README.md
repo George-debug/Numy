@@ -6,7 +6,7 @@ ___
   The numbers should be in one column or side by side. Every level is solvable!
 
 ### Buttons
- * 'Check': get the first possible move
- * 'Add': add numbers to the playing field
- * 'Level': type the level
- * 'New': start the new game within the current level
+ * **Check**: get the first possible move
+ * **Add**: add numbers to the playing field
+ * **Level**: type the level
+ * **New**: start the new game within the current level
