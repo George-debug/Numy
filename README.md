@@ -10,3 +10,7 @@ ___
  * **Add**: add numbers to the playing field
  * **Level**: type the level
  * **New**: start the new game within the current level
+
+### Warning
+  * Not responsive (even though the design was made)
+	* Visual bugs in some browsers
