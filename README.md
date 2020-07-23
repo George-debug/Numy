@@ -1,5 +1,6 @@
 # Numy
 Numy is a game inspired by [Numberama](play.google.com/store/apps/details?id=com.kila.zahlenspielpro.lars)
+[**Design journey**](https://imgur.com/a/8Xdh5fK)
 ___
 ### HOW TO PLAY
   Clear the playing field by crossing out the numbers. Two numbers can be removed if they are equal or sum up 10.
