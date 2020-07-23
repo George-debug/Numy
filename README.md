@@ -1,5 +1,5 @@
 # Numy
-Numy is a game inspired by [Numberama](play.google.com/store/apps/details?id=com.kila.zahlenspielpro.lars)
+Numy is a game inspired by [Numberama](play.google.com/store/apps/details?id=com.kila.zahlenspielpro.lars)</br>
 [**Design journey**](https://imgur.com/a/8Xdh5fK)
 ___
 ### HOW TO PLAY
